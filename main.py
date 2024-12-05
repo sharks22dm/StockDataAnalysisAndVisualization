@@ -34,6 +34,9 @@ def main():
     # Колебания цен за период
     dd.notify_if_strong_fluctuations(stock_data, threshold)
 
+    # Экспорт данных в CSV файл
+    dd.export_data_to_csv(stock_data, f"{ticker}_{period}_stock_data.csv")
+
 
 if __name__ == "__main__":
     main()

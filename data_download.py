@@ -41,3 +41,11 @@ def notify_if_strong_fluctuations(data, threshold):
     else:
         print(f'Цена акций колебалась менее чем на {threshold:.2f}% за период. '
               f'Колебание составило: {fluctuation:.2f}%')
+
+
+def export_data_to_csv(data, filename):
+    """
+    Экспортирует данные в CSV-файл.
+    """
+    data.to_csv(filename, index=False)
+    print(f"Данные сохранены в {filename}")
