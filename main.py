@@ -25,8 +25,16 @@ def main():
     # Add moving average to the data
     stock_data = dd.add_moving_average(stock_data)
 
+    # Расчет и добавление RSI в таблицу
+    dd.calculate_rsi(stock_data)
+
+    # Расчет и добавление MACD в таблицу
+    dd.calculate_macd(stock_data)
+
     # Plot the data
     dplt.create_and_save_plot(stock_data, ticker, period)
+    dplt.plot_rsi(stock_data, ticker)
+    dplt.plot_macd(stock_data, ticker)
 
     # Средняя цена закрытия акций за период
     dd.calculate_and_display_average_price(stock_data)

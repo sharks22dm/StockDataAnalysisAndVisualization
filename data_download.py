@@ -49,3 +49,29 @@ def export_data_to_csv(data, filename):
     """
     data.to_csv(filename, index=False)
     print(f"Данные сохранены в {filename}")
+
+
+def calculate_rsi(data, window_size=14):
+    """
+    Вычисляет RSI (Relative Strength Index) для заданного периода.
+    """
+    delta = data['Close'].diff()
+    gain = (delta.where(delta > 0, 0)).rolling(window=window_size).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(window=window_size).mean()
+    rs = gain / loss
+    rsi = 100 - (100 / (1 + rs))
+    data['RSI'] = rsi
+    return data
+
+
+def calculate_macd(data, window_short_size=12, window_long_size=26, signal_size=9):
+    """
+    Вычисляет MACD (Moving Average Convergence Divergence) для заданного периода.
+    """
+    ema_fast = data['Close'].ewm(span=window_short_size).mean()
+    ema_slow = data['Close'].ewm(span=window_long_size * 2).mean()
+    macd = ema_fast - ema_slow
+    signal = macd.ewm(span=signal_size).mean()
+    data['MACD'] = macd
+    data['Signal'] = signal
+    return data

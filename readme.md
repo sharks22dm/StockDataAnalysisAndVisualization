@@ -10,11 +10,12 @@
 - Функция расчета средней цены закрытия акций за период
 - Функция расчета колебания цены за период.
 - Экспорт данных в CSV-файл.
+- Расчет RSI и MACD
 
 ## data_plotting.py:
 - Отвечает за визуализацию данных.
 - Содержит функции для создания и сохранения графиков цен закрытия и скользящих средних.
-
+- Графики RSI и MACD
 
 ## Примеры работы кода
 
@@ -27,3 +28,9 @@
 - График цен акций Tesla Inc за 6 месяцев
 
 ![График цен акций Tesla Inc за 6 месяцев](example_work/TSLA_6mo_stock_price_chart.png)
+
+- RSI Tesla Inc
+![RSI](example_work/TSLA_RSI_chart.png)
+
+- MACD Tesla Inc
+![MACD](example_work/TSLA_MACD_chart.png)
