@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def create_and_save_plot(data, ticker, period, filename=None):
+def create_and_save_plot(data, ticker, period, start, end, filename=None):
     """
     Создаёт график, отображающий цены закрытия и скользящие средние.
     Предоставляет возможность сохранения графика в файл. Параметр filename опционален;
@@ -30,7 +30,10 @@ def create_and_save_plot(data, ticker, period, filename=None):
     plt.legend()
 
     if filename is None:
-        filename = f"{ticker}_{period}_stock_price_chart.png"
+        if start and end:
+            filename = f"{ticker}_{start}_{end}_stock_price_chart.png"
+        else:
+            filename = f"{ticker}_{period}_stock_price_chart.png"
 
     plt.savefig(filename)
     print(f"График сохранен как {filename}")
